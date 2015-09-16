@@ -1,10 +1,14 @@
 # Lexical vs. Dynamic Scoping
 The scoping rules of a ProgrammingLanguage dictate how FreeVariables - symbol names which are found in the body of a scope (a function, macro, class, whatever) but not defined there - are resolved.
 
-There are several different strategies,
+There are several different strategies:
+
 1. Very rare language disallow free references, except pre-defined set of symbols(called keywords or special forms).
+
 2. Two scoping level only, global and local. Like C and many assemblers.
+
 3. Lexical Scoping. If a variable isn't found in a given scope, the enclosing scope is searched; repeating until the outermost scope is reached. Used by CommonLisp, SchemeLanguage, AlgolLanguage, PascalLanguage, and many other modern languages.
+
 4. DynamicScoping (early dialects of Lisp, CommonLisp special variables, exported environment variables in UnixOs): The caller is checked for a binding for the variable; if one is found, it is used. Otherwise, the caller's caller is checked, and so on. If no definition is found, it is either an error or a default value is used, depending on the semantics of the language.
 
 ## Lexical Scoping
