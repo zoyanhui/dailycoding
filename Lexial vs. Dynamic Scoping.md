@@ -25,6 +25,7 @@ f <- function(x){
 g <- function(x){
    x * y
 }
+print(f(3))
 ```
 
 - Python
@@ -82,11 +83,7 @@ int main(){
 }
 ```
 Above *C* and *javascript* code both will print 34.
-
-In **lexical Scoping**, every function keeps a pointer to its defined environment. Any free symbols will be searched from this defined environment, or ancestor environment of defined.
-
-## Dynamic Scoping
-But, other language like *Perl* using **Dynamic Scoping** works different, which search symbol from called area. *e.g.:*
+- Perl
 ```
 #!/usr/bin/perl
 $y = 10;
@@ -100,7 +97,29 @@ sub g{
 }
 ```
 
-Above code will print *10 (2^2 + 2 * 3)*. Call *g* in *f*, symbol y's binding value is the *y* defined in f.
+The *Perl* code will print 10 (deferent from *Python* and *R*), because global $y's value is changed in f. But *Perl* is using Lexical Scoping. The difference between *Perl* and *R*, *Python* is that *R* and *Python* use redefining a local symbol to deal with the symbol which is the same name as global(outermost) one, and *Python* provide a keyword *global* to reference to global one. But *Perl* directly use the global one.
+
+Other languages that support lexical scoping: *Scheme*, *Common Lisp (all languages converge to Lisp)*
+
+In **lexical Scoping**, every function keeps a pointer to its defined environment. Any free symbols will be searched from this defined environment, or ancestor environment of defined.
+
+## Dynamic Scoping
+But, other languages using **Dynamic Scoping** work different, which search symbol from called area at running time. *e.g.:*
+```
+y <- 10
+f <- function(x){
+   y <- 2
+   y^2 + g(x)
+}
+
+g <- function(x){
+   x * y
+}
+print(f(3)) # print 10, if in DynamicScoping
+print(y)    # print 10
+```
+
+If above code using **DynamicScoping** will print *10 (2^2 + 2 * 3)*. Call *g* in *f*, symbol y's binding value is the *y* defined in f. But next print(y) will print the global y value, 10.
 
 Dynamic scoping is useful as a substitute for globally scoped variables. A function can say "let current_numeric_base = 16; call other functions;" and the other functions will all print in hexadecimal. Then when they return, and the base-setting function returns, the base will return to whatever it was.
 So yes, writing a macro to save, change and restore arbitrary global variables actually implements dynamic scoping. Global variables don't really have lexical scope, however, so it's not "in terms of" lexical scoping. Unfortunately, dynamic scoping (along with global variables) begins to break down in multi-threaded situations.If you just save the variable, assign to it, and restore it, it won't be thread safe, and it will require a special binding construct. Real SpecialVariables work with any binding construct: LET, MULTIPLE-VALUE-BIND, WITH-OPEN-FILE, etc; the special nature of the binding is remembered as a property of the symbol and applied accordingly. And in Lisp implementations that support threads, the bindings are thread-specific! Implementing thread-specific storage is not trivial. If you assign to *standard-output*, you have a race condition.
