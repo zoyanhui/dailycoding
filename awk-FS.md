@@ -59,5 +59,5 @@ Why?
   }
   ```
   <p style='color:#FF4500'>
-  Both of above may not work in some os system or bash shell environment. I am not sure the reason is about os or bash shell.
+  Note: Both of above may not work in some os system or bash shell environment. I am not sure the reason is about os or bash shell.
   </p>
