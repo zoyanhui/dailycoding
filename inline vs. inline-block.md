@@ -5,7 +5,7 @@ You cannot set height and width for elements with ```display:inline;```, need ``
 
 ## Space Between Inline Elements
 layout-code1:
-```
+```{html}
 <div>
   <a href="#">One</a>
   <a href="#">Two</a>
@@ -13,7 +13,7 @@ layout-code1:
 </div>
 ```
 layout-code2:
-```
+```{html}
 <div>
   <a href="#">One</a
   ><a href="#">Two</a
@@ -23,7 +23,7 @@ layout-code2:
 The result of layout-code1 will display three elements separating by space. But  layout-code2 will display without space separation.
 
 It is obvious to ```<a></a>```. But also to any other inline elements it will work as the same. For example:
-```
+```{html+css}
 <div>
   <div class="item">One</div>
   <div class="item">Two</div>
@@ -41,7 +41,7 @@ It is obvious to ```<a></a>```. But also to any other inline elements it will wo
 
 - Using negative margin *(But the value of margin can not be set precisely.)*
 
-```
+```{html+css}
 <div>
   <div class="item">One</div>
   <div class="item">Two</div>
@@ -58,7 +58,7 @@ It is obvious to ```<a></a>```. But also to any other inline elements it will wo
 
 - Skip the closing tag in **HTML5**
 
-```
+```{html+css}
 <div>
   <div id="div1" class="item">One
   <div class="item">Two
@@ -74,7 +74,7 @@ It is obvious to ```<a></a>```. But also to any other inline elements it will wo
 
 - Set font size to zero
 
-```
+```{css}
 div{
     font-size: 0px;
 }
@@ -89,7 +89,7 @@ div{
 
 - Float inline elements
 
-```
+```{css}
 .item{
   display: inline;
   background: red;
@@ -100,7 +100,7 @@ div{
 
 - Using flex if supported
 
-```
+```{html+css}
 <div>
   <a id="div1" class="item">One</a>
     <a class="item">Two</a>
