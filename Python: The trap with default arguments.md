@@ -1,4 +1,6 @@
-# Problem
+# Python: The trap with default arguments
+
+## Problem
 The sample code below, what is the output do you think?
 
 ```{python}
@@ -22,13 +24,13 @@ The para named mylist has been changed at the second call.
 
 Why?
 
-# [Python Common Gotchas](http://docs.python-guide.org/en/latest/writing/gotchas/)
+## [Python Common Gotchas](http://docs.python-guide.org/en/latest/writing/gotchas/)
 >Python’s default arguments are evaluated once when the function is defined,
 not each time the function is called (like it is in say, Ruby).
 This means that if you use a mutable default argument and mutate it,
 you will and have mutated that object for all future calls to the function as well.
 
-# Solution
+## Solution
 Create a new object each time the function is called,
 by using a default arg to signal that no argument was provided (None is often a good choice).
 
@@ -44,7 +46,7 @@ if __name__ == '__main__':
     test_default(x = 2)
 ```
 
-# Further Thinking
+## Further Thinking
 1. Variable of python is a pointer to a memory.
 The operation with the variable has same steps:
     - Get the value at the memory

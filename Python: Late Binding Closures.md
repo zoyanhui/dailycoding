@@ -1,4 +1,4 @@
-# [Late Binding Closures](http://docs.python-guide.org/en/latest/writing/gotchas/)
+# Python [Late Binding Closures](http://docs.python-guide.org/en/latest/writing/gotchas/)
 
 Another common source of confusion is the way Python binds
 its variables in closures (or in the surrounding global scope).
