@@ -1,0 +1,1 @@
+hadoop jar /root/hadoop/hadoop-2.7.2/share/hadoop/tools/lib/hadoop-streaming-2.7.2.jar -input /root/hadoop/join-input -output /root/hadoop/join-output -mapper 'python join-map.py' -reducer 'python join-reduce.py' -file join-map.py -file join-reduce.py 
