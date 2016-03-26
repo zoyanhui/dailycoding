@@ -1,0 +1,87 @@
+# Conditional expression with boxing conversion
+
+> The type of a conditional expression is determined as follows: If the second and third operands have the same type (which may be the null type), then that is the type of the conditional expression. If one of the second and third operands is of primitive type T, and the type of the other is the result of applying boxing conversion (§5.1.7) to T, then the type of the conditional expression is T.
+
+```{java}
+// Ceboxing.java
+public class Ceboxing{
+   public boolean isMatch(int a, int b){
+        return a == b ? true : null;
+   }
+}
+```
+
+```{bytecode}
+// bytecode
+Classfile Ceboxing.class
+  Last modified Mar 24, 2016; size 394 bytes
+  MD5 checksum 2260f406eb3de865d2539ee0280c75aa
+  Compiled from "Ceboxing.java"
+public class Ceboxing
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #5.#16         // java/lang/Object."<init>":()V
+   #2 = Methodref          #17.#18        // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+   #3 = Methodref          #17.#19        // java/lang/Boolean.booleanValue:()Z
+   #4 = Class              #20            // Ceboxing
+   #5 = Class              #21            // java/lang/Object
+   #6 = Utf8               <init>
+   #7 = Utf8               ()V
+   #8 = Utf8               Code
+   #9 = Utf8               LineNumberTable
+  #10 = Utf8               isMatch
+  #11 = Utf8               (II)Z
+  #12 = Utf8               StackMapTable
+  #13 = Class              #22            // java/lang/Boolean
+  #14 = Utf8               SourceFile
+  #15 = Utf8               Ceboxing.java
+  #16 = NameAndType        #6:#7          // "<init>":()V
+  #17 = Class              #22            // java/lang/Boolean
+  #18 = NameAndType        #23:#24        // valueOf:(Z)Ljava/lang/Boolean;
+  #19 = NameAndType        #25:#26        // booleanValue:()Z
+  #20 = Utf8               Ceboxing
+  #21 = Utf8               java/lang/Object
+  #22 = Utf8               java/lang/Boolean
+  #23 = Utf8               valueOf
+  #24 = Utf8               (Z)Ljava/lang/Boolean;
+  #25 = Utf8               booleanValue
+  #26 = Utf8               ()Z
+{
+  public Ceboxing();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 1: 0
+
+  public boolean isMatch(int, int);
+    descriptor: (II)Z
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: iload_1
+         1: iload_2
+         2: if_icmpne     12
+         5: iconst_1
+         6: invokestatic  #2                  // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+         9: goto          13
+        12: aconst_null
+        13: invokevirtual #3                  // Method java/lang/Boolean.booleanValue:()Z
+        16: ireturn
+      LineNumberTable:
+        line 3: 0
+      StackMapTable: number_of_entries = 2
+        frame_type = 12 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Boolean ]
+}
+SourceFile: "Ceboxing.java"
+```
+We can see in isMatch method, the line 13 and line 16 will call Boolean.valueOf and Boolean.booleanValue from byte code.
+So, the line 13 will throw a NullPointerException.
