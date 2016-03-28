@@ -1,0 +1,133 @@
+Classfile /Users/zhouyanhui/dailycoding/java-corner/src/Finally-with-local-value/FinallyTest.class
+  Last modified Mar 27, 2016; size 709 bytes
+  MD5 checksum cfa8b4dbe7aec1ec2b14ba616046b59d
+  Compiled from "FinallyTest.java"
+public class FinallyTest
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #11.#26        // java/lang/Object."<init>":()V
+   #2 = Fieldref           #27.#28        // java/lang/System.out:Ljava/io/PrintStream;
+   #3 = Class              #29            // FinallyTest
+   #4 = Methodref          #3.#26         // FinallyTest."<init>":()V
+   #5 = Methodref          #3.#30         // FinallyTest.test:()I
+   #6 = Methodref          #31.#32        // java/io/PrintStream.println:(I)V
+   #7 = Class              #33            // java/lang/Exception
+   #8 = Methodref          #7.#26         // java/lang/Exception."<init>":()V
+   #9 = String             #34            // finally
+  #10 = Methodref          #31.#35        // java/io/PrintStream.println:(Ljava/lang/String;)V
+  #11 = Class              #36            // java/lang/Object
+  #12 = Utf8               <init>
+  #13 = Utf8               ()V
+  #14 = Utf8               Code
+  #15 = Utf8               LineNumberTable
+  #16 = Utf8               main
+  #17 = Utf8               ([Ljava/lang/String;)V
+  #18 = Utf8               test
+  #19 = Utf8               ()I
+  #20 = Utf8               StackMapTable
+  #21 = Class              #29            // FinallyTest
+  #22 = Class              #33            // java/lang/Exception
+  #23 = Class              #37            // java/lang/Throwable
+  #24 = Utf8               SourceFile
+  #25 = Utf8               FinallyTest.java
+  #26 = NameAndType        #12:#13        // "<init>":()V
+  #27 = Class              #38            // java/lang/System
+  #28 = NameAndType        #39:#40        // out:Ljava/io/PrintStream;
+  #29 = Utf8               FinallyTest
+  #30 = NameAndType        #18:#19        // test:()I
+  #31 = Class              #41            // java/io/PrintStream
+  #32 = NameAndType        #42:#43        // println:(I)V
+  #33 = Utf8               java/lang/Exception
+  #34 = Utf8               finally
+  #35 = NameAndType        #42:#44        // println:(Ljava/lang/String;)V
+  #36 = Utf8               java/lang/Object
+  #37 = Utf8               java/lang/Throwable
+  #38 = Utf8               java/lang/System
+  #39 = Utf8               out
+  #40 = Utf8               Ljava/io/PrintStream;
+  #41 = Utf8               java/io/PrintStream
+  #42 = Utf8               println
+  #43 = Utf8               (I)V
+  #44 = Utf8               (Ljava/lang/String;)V
+{
+  public FinallyTest();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 1: 0
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: new           #3                  // class FinallyTest
+         6: dup
+         7: invokespecial #4                  // Method "<init>":()V
+        10: invokevirtual #5                  // Method test:()I
+        13: invokevirtual #6                  // Method java/io/PrintStream.println:(I)V
+        16: return
+      LineNumberTable:
+        line 3: 0
+        line 4: 16
+
+  public int test();
+    descriptor: ()I
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=5, args_size=1
+         0: iconst_1
+         1: istore_1
+         2: new           #7                  // class java/lang/Exception
+         5: dup
+         6: invokespecial #8                  // Method java/lang/Exception."<init>":()V
+         9: athrow
+        10: astore_2
+        11: iload_1
+        12: istore_3
+        13: iconst_2
+        14: istore_1
+        15: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        18: ldc           #9                  // String finally
+        20: invokevirtual #10                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        23: iload_3
+        24: ireturn
+        25: astore        4
+        27: iconst_2
+        28: istore_1
+        29: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        32: ldc           #9                  // String finally
+        34: invokevirtual #10                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        37: aload         4
+        39: athrow
+      Exception table:
+         from    to  target type
+             2    10    10   Class java/lang/Exception
+             2    13    25   any
+            25    27    25   any
+      LineNumberTable:
+        line 7: 0
+        line 9: 2
+        line 10: 10
+        line 11: 11
+        line 13: 13
+        line 14: 15
+        line 13: 25
+        line 14: 29
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 10
+          locals = [ class FinallyTest, int ]
+          stack = [ class java/lang/Exception ]
+        frame_type = 78 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+}
+SourceFile: "FinallyTest.java"
