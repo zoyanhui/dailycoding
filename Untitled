@@ -1,0 +1,32 @@
+# TODO
+
+1.
+字符串拼接效率比较
+
+直接使用+ 最慢
+
+使用StringBuilder.append(),速度最快，但有线程安全问题，只有JDK5支持
+
+Join和StringBuffer速度差不多
+
+StringUtils:join(Object[] array, String separator),将字符串数组转成字符串(和split对应)
+
+string(s).concat()比+快不了多少
+
+2. Java 内存模型（线程模型） 代码级别详细探究
+
+3. Gc方式和策略，加强
+
+4. NIO
+
+5. Java 多线程 非阻塞同步
+
+6. 锁优化
+
+适应性自旋
+锁消除
+锁粗化
+轻量级锁
+偏向锁
+
+7. Netty
